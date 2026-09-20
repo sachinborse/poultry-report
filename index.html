@@ -237,7 +237,7 @@ table.register tfoot td { background: #f5f2f0; font-weight: 600; color: var(--br
 .mini-warn { color: var(--danger); font-size: 12px; margin-left: 8px; }
 
 /* small sub-tables (bodyweight, uniformity, vaccines) */
-table.grid { border-collapse: collapse; width: 100%; font-size: 13px; }
+table.grid { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 13px; }
 table.grid th, table.grid td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; }
 table.grid th { background: #f5f2f0; color: var(--brand-dark); font-weight: 600; }
 table.grid input, table.grid select {
@@ -1531,9 +1531,9 @@ function buildEggBodyWeight(week) {
       <td><input type="text" data-eggbw="${sex}:weightRange" value="${vv("weightRange")}"></td></tr>`;
   };
   return `<div class="card"><div class="card-head"><h3>Body Weight</h3></div>
-    <div class="card-body"><table class="grid"><thead><tr>
+    <div class="card-body"><div class="table-scroll"><table class="grid"><thead><tr>
       <th>Body Weight</th><th>ACT</th><th>STD</th><th>+/-</th><th>Act Gain</th><th>Std Gain</th><th>CV %</th><th>Weight Range</th>
-    </tr></thead><tbody>${rowFor("female", "Female")}${rowFor("male", "Male")}</tbody></table></div></div>`;
+    </tr></thead><tbody>${rowFor("female", "Female")}${rowFor("male", "Male")}</tbody></table></div></div></div>`;
 }
 
 function buildEggExtras(week) {
@@ -1700,10 +1700,10 @@ function buildBodyWeight(flock) {
   }).join("");
   return `<div class="card"><div class="card-head"><h3>Body Weight</h3>
       <button class="btn btn-sm" data-action="addBw">＋ Grade row</button></div>
-    <div class="card-body"><table class="grid"><thead><tr>
+    <div class="card-body"><div class="table-scroll"><table class="grid"><thead><tr>
       <th>Grade</th><th>No. of Birds</th><th>Std BW</th><th>This Wk BW</th><th>Last Wk BW</th>
       <th>BW +/-</th><th>Std Gain</th><th>This Wk Gain</th><th>Gain +/-</th><th></th>
-    </tr></thead><tbody>${rows}</tbody></table></div></div>`;
+    </tr></thead><tbody>${rows}</tbody></table></div></div></div>`;
 }
 
 function buildUniformity(flock) {
@@ -1728,9 +1728,9 @@ function buildVaccines(flock) {
   }).join("");
   return `<div class="card"><div class="card-head"><h3>Vaccination</h3>
       <button class="btn btn-sm" data-action="addVaccine">＋ Vaccine</button></div>
-    <div class="card-body"><table class="grid"><thead><tr>
+    <div class="card-body"><div class="table-scroll"><table class="grid"><thead><tr>
       <th>Vaccine Name</th><th>Batch No.</th><th>Manufacture Date</th><th>Expiry Date</th><th>Vaccine Done Date</th><th></th>
-    </tr></thead><tbody>${rows || ""}</tbody></table></div></div>`;
+    </tr></thead><tbody>${rows || ""}</tbody></table></div></div></div>`;
 }
 
 function buildAttendance(flock, week) {
