@@ -273,10 +273,16 @@ textarea.remarks { width: 100%; min-height: 90px; resize: vertical; }
 .summary-pills { display: flex; gap: 10px; flex-wrap: wrap; }
 .pill {
   background: var(--accent-soft); color: var(--accent); border-radius: 8px;
-  padding: 8px 12px; font-weight: 600; display: flex; flex-direction: column; gap: 2px; min-width: 120px;
+  padding: 8px 12px; font-weight: 600; display: flex; flex-direction: column; gap: 2px; min-width: 150px;
 }
 .pill span { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; }
 .pill strong { font-size: 17px; color: var(--ink); }
+.pill-rows { display: flex; flex-direction: column; gap: 1px; width: 100%; }
+.pill-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 13px; }
+.pill-row em { font-style: normal; font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); font-weight: 600; }
+.pill-row b { color: var(--ink); font-weight: 700; }
+.pill-row.total { border-top: 1px solid var(--line); margin-top: 3px; padding-top: 3px; }
+.pill-row.total b { color: var(--accent); }
 
 .hint { color: var(--muted); font-size: 12px; margin: 6px 0 0; }
 
@@ -388,707 +394,7 @@ body.nav-collapsed .sidebar { display: none; }
   </div>
 
   <script>
-const DEFAULT_DATA = {
-  "farms": [
-    {
-      "id": "farm-aarohi-8f",
-      "name": "AAROHI B/F",
-      "company": "AVEE BROILER PRIVATE LIMITED",
-      "flocks": [
-        {
-          "id": "flock-ar-381",
-          "flockNo": "AR-381",
-          "henHousedFemale": 16380,
-          "henHousedMale": 0,
-          "weekNo": "1.0",
-          "pageNo": "001",
-          "entries": [
-            {
-              "date": "2026-08-27",
-              "mortalityF": 3,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 1050,
-              "femCons": 100,
-              "maleCons": 0,
-              "openingF": 13020,
-              "openingM": 0,
-              "feedOpening": 0
-            },
-            {
-              "date": "2026-08-28",
-              "mortalityF": 10,
-              "mortalityM": 0,
-              "cullsF": 3360,
-              "cullsM": 0,
-              "feedReceived": 2030,
-              "femCons": 180,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-08-29",
-              "mortalityF": 36,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 1500,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-08-30",
-              "mortalityF": 24,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 7000,
-              "femCons": 1500,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-08-31",
-              "mortalityF": 27,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": -3000,
-              "femCons": 800,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-01",
-              "mortalityF": 20,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 300,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-02",
-              "mortalityF": 20,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 300,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-03",
-              "mortalityF": 18,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 3500,
-              "femCons": 400,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-04",
-              "mortalityF": 22,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 500,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-05",
-              "mortalityF": 18,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 500,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-06",
-              "mortalityF": 12,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 1500,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-07",
-              "mortalityF": 12,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 1000,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-08",
-              "mortalityF": 15,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 1000,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-09",
-              "mortalityF": 13,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 500,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-10",
-              "mortalityF": 10,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 500,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-11",
-              "mortalityF": 5,
-              "mortalityM": 0,
-              "cullsF": -4800,
-              "cullsM": 0,
-              "feedReceived": 1200,
-              "femCons": 600,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-12",
-              "mortalityF": 2,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 600,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-13",
-              "mortalityF": 5,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 1190,
-              "femCons": 0,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-14",
-              "mortalityF": 3,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 1050,
-              "femCons": 452,
-              "maleCons": 0
-            }
-          ],
-          "bodyWeights": [
-            {
-              "grade": "Female",
-              "noOfBirds": "",
-              "stdBW": 150,
-              "thisWkBW": 140,
-              "lastWkBW": "",
-              "stdGain": "",
-              "thisWkGain": ""
-            }
-          ],
-          "uniformity": {
-            "uniformityPct": "",
-            "cv": "",
-            "srvPct": "",
-            "feedGmStd": "",
-            "feedGmLastWk": "",
-            "feedGmThisWk": "",
-            "remark": ""
-          },
-          "vaccines": [
-            {
-              "name": "GLOBIVAC IBH",
-              "batchNo": "",
-              "mfgDate": "",
-              "expiryDate": "",
-              "doneDate": "2026-08-30"
-            },
-            {
-              "name": "ND PULLET",
-              "batchNo": "",
-              "mfgDate": "",
-              "expiryDate": "",
-              "doneDate": "2026-09-01"
-            }
-          ],
-          "attendance": {
-            "days": [
-              "2026-08-27",
-              "2026-08-28",
-              "2026-08-29",
-              "2026-08-30",
-              "2026-08-31",
-              "2026-09-01",
-              "2026-09-02"
-            ],
-            "workers": [
-              {
-                "name": "Worker 1",
-                "present": {
-                  "2026-08-27": "P",
-                  "2026-08-28": "P",
-                  "2026-08-29": "P",
-                  "2026-08-30": "P",
-                  "2026-08-31": "P",
-                  "2026-09-01": "P",
-                  "2026-09-02": "P"
-                }
-              },
-              {
-                "name": "Worker 2",
-                "present": {
-                  "2026-08-27": "P",
-                  "2026-08-28": "P",
-                  "2026-08-29": "P",
-                  "2026-08-30": "P",
-                  "2026-08-31": "P",
-                  "2026-09-01": "P",
-                  "2026-09-02": "P"
-                }
-              },
-              {
-                "name": "Worker 3",
-                "present": {
-                  "2026-08-27": "P",
-                  "2026-08-28": "P",
-                  "2026-08-29": "P",
-                  "2026-08-30": "P",
-                  "2026-08-31": "P",
-                  "2026-09-01": "P",
-                  "2026-09-02": "P"
-                }
-              },
-              {
-                "name": "Worker 4",
-                "present": {
-                  "2026-08-27": "P",
-                  "2026-08-28": "P",
-                  "2026-08-29": "P",
-                  "2026-08-30": "P",
-                  "2026-08-31": "P",
-                  "2026-09-01": "P",
-                  "2026-09-02": "P"
-                }
-              },
-              {
-                "name": "Worker 5",
-                "present": {
-                  "2026-08-27": "P",
-                  "2026-08-28": "P",
-                  "2026-08-29": "P",
-                  "2026-08-30": "P",
-                  "2026-08-31": "P",
-                  "2026-09-01": "P",
-                  "2026-09-02": "P"
-                }
-              },
-              {
-                "name": "Worker 6",
-                "present": {
-                  "2026-08-27": "P",
-                  "2026-08-28": "P",
-                  "2026-08-29": "P",
-                  "2026-08-30": "P",
-                  "2026-08-31": "P",
-                  "2026-09-01": "P",
-                  "2026-09-02": "P"
-                }
-              },
-              {
-                "name": "Worker 7",
-                "present": {
-                  "2026-08-27": "P",
-                  "2026-08-28": "P",
-                  "2026-08-29": "P",
-                  "2026-08-30": "P",
-                  "2026-08-31": "P",
-                  "2026-09-01": "P",
-                  "2026-09-02": "P"
-                }
-              },
-              {
-                "name": "Worker 8",
-                "present": {
-                  "2026-08-27": "P",
-                  "2026-08-28": "P",
-                  "2026-08-29": "P",
-                  "2026-08-30": "P",
-                  "2026-08-31": "P",
-                  "2026-09-01": "P",
-                  "2026-09-02": "P"
-                }
-              },
-              {
-                "name": "Worker 9",
-                "present": {
-                  "2026-08-27": "P",
-                  "2026-08-28": "P",
-                  "2026-08-29": "P",
-                  "2026-08-30": "P",
-                  "2026-08-31": "P",
-                  "2026-09-01": "P",
-                  "2026-09-02": "P"
-                }
-              },
-              {
-                "name": "Worker 10",
-                "present": {
-                  "2026-08-27": "P",
-                  "2026-08-28": "P",
-                  "2026-08-29": "P",
-                  "2026-08-30": "P",
-                  "2026-08-31": "P",
-                  "2026-09-01": "P",
-                  "2026-09-02": "P"
-                }
-              }
-            ]
-          },
-          "remarks": ""
-        },
-        {
-          "id": "flock-ar-382",
-          "flockNo": "AR-382",
-          "henHousedFemale": 16380,
-          "henHousedMale": 6240,
-          "weekNo": "1.0",
-          "pageNo": "",
-          "entries": [
-            {
-              "date": "2026-08-31",
-              "mortalityF": 3,
-              "mortalityM": 2,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 3000,
-              "femCons": 70,
-              "maleCons": 30,
-              "openingF": 5135,
-              "openingM": 3240,
-              "feedOpening": 0
-            },
-            {
-              "date": "2026-09-01",
-              "mortalityF": 12,
-              "mortalityM": 8,
-              "cullsF": 15360,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 200,
-              "maleCons": 100
-            },
-            {
-              "date": "2026-09-02",
-              "mortalityF": 24,
-              "mortalityM": 5,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 500,
-              "maleCons": 200
-            },
-            {
-              "date": "2026-09-03",
-              "mortalityF": 26,
-              "mortalityM": 5,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 3500,
-              "femCons": 300,
-              "maleCons": 100
-            },
-            {
-              "date": "2026-09-04",
-              "mortalityF": 26,
-              "mortalityM": 3,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 300,
-              "maleCons": 200
-            },
-            {
-              "date": "2026-09-05",
-              "mortalityF": 14,
-              "mortalityM": 4,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 300,
-              "maleCons": 200
-            },
-            {
-              "date": "2026-09-06",
-              "mortalityF": 15,
-              "mortalityM": 5,
-              "cullsF": 0,
-              "cullsM": 3000,
-              "feedReceived": 0,
-              "femCons": 1000,
-              "maleCons": 300
-            },
-            {
-              "date": "2026-09-07",
-              "mortalityF": 15,
-              "mortalityM": 8,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 700,
-              "maleCons": 300
-            },
-            {
-              "date": "2026-09-08",
-              "mortalityF": 12,
-              "mortalityM": 9,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 700,
-              "maleCons": 300
-            },
-            {
-              "date": "2026-09-09",
-              "mortalityF": 24,
-              "mortalityM": 11,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 500,
-              "maleCons": 200
-            },
-            {
-              "date": "2026-09-10",
-              "mortalityF": 18,
-              "mortalityM": 7,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 5530,
-              "femCons": 500,
-              "maleCons": 300
-            },
-            {
-              "date": "2026-09-11",
-              "mortalityF": 6,
-              "mortalityM": 0,
-              "cullsF": -9300,
-              "cullsM": -6173,
-              "feedReceived": -3530,
-              "femCons": 600,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-12",
-              "mortalityF": 3,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 600,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-13",
-              "mortalityF": 4,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 1190,
-              "femCons": 0,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-14",
-              "mortalityF": 3,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 1050,
-              "femCons": 440,
-              "maleCons": 0
-            }
-          ],
-          "bodyWeights": [],
-          "uniformity": {
-            "uniformityPct": "",
-            "cv": "",
-            "srvPct": "",
-            "feedGmStd": "",
-            "feedGmLastWk": "",
-            "feedGmThisWk": "",
-            "remark": ""
-          },
-          "vaccines": [],
-          "attendance": {
-            "days": [],
-            "workers": []
-          },
-          "remarks": ""
-        },
-        {
-          "id": "flock-ar-383",
-          "flockNo": "AR-383",
-          "henHousedFemale": 11000,
-          "henHousedMale": 0,
-          "weekNo": "1.0",
-          "pageNo": "",
-          "entries": [
-            {
-              "date": "2026-09-11",
-              "mortalityF": 3,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 1200,
-              "femCons": 600,
-              "maleCons": 0,
-              "openingF": 11000,
-              "openingM": 0,
-              "feedOpening": 0
-            },
-            {
-              "date": "2026-09-12",
-              "mortalityF": 3,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 600,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-13",
-              "mortalityF": 4,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 1190,
-              "femCons": 0,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-14",
-              "mortalityF": 3,
-              "mortalityM": 0,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 1050,
-              "femCons": 700,
-              "maleCons": 0
-            }
-          ],
-          "bodyWeights": [],
-          "uniformity": {
-            "uniformityPct": "",
-            "cv": "",
-            "srvPct": "",
-            "feedGmStd": "",
-            "feedGmLastWk": "",
-            "feedGmThisWk": "",
-            "remark": ""
-          },
-          "vaccines": [],
-          "attendance": {
-            "days": [],
-            "workers": []
-          },
-          "remarks": ""
-        },
-        {
-          "id": "flock-ar-384",
-          "flockNo": "AR-384",
-          "henHousedFemale": 3100,
-          "henHousedMale": 3100,
-          "weekNo": "1.0",
-          "pageNo": "",
-          "entries": [
-            {
-              "date": "2026-09-11",
-              "mortalityF": 3,
-              "mortalityM": 7,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 1130,
-              "femCons": 200,
-              "maleCons": 400,
-              "openingF": 3100,
-              "openingM": 6173,
-              "feedOpening": 0
-            },
-            {
-              "date": "2026-09-12",
-              "mortalityF": 2,
-              "mortalityM": 7,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 0,
-              "femCons": 200,
-              "maleCons": 330
-            },
-            {
-              "date": "2026-09-13",
-              "mortalityF": 3,
-              "mortalityM": 7,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 1050,
-              "femCons": 0,
-              "maleCons": 0
-            },
-            {
-              "date": "2026-09-14",
-              "mortalityF": 2,
-              "mortalityM": 12,
-              "cullsF": 0,
-              "cullsM": 0,
-              "feedReceived": 910,
-              "femCons": 150,
-              "maleCons": 300
-            }
-          ],
-          "bodyWeights": [],
-          "uniformity": {
-            "uniformityPct": "",
-            "cv": "",
-            "srvPct": "",
-            "feedGmStd": "",
-            "feedGmLastWk": "",
-            "feedGmThisWk": "",
-            "remark": ""
-          },
-          "vaccines": [],
-          "attendance": {
-            "days": [],
-            "workers": []
-          },
-          "remarks": ""
-        }
-      ]
-    }
-  ]
-};
+const DEFAULT_DATA = { "farms": [] };
 
 /* Poultry Weekly Report - single-file SPA (vanilla JS, no server).
  * Data is stored as JSON in the browser (localStorage) and can be moved between
@@ -1145,7 +451,7 @@ function defaultUniformity() {
 }
 function makeWeek(no, entries) {
   return {
-    id: uid("week"), weekNo: no, startDate: "", entries: entries || [],
+    id: uid("week"), weekNo: no, startDate: "", henHousedFemale: "", henHousedMale: "", ageStart: "", entries: entries || [],
     bodyWeights: [], uniformity: defaultUniformity(),
     vaccines: [], attendance: { present: {} }, remarks: "",
   };
@@ -1182,6 +488,7 @@ function migrateData(data) {
         delete flock.vaccines; delete flock.attendance; delete flock.remarks; delete flock.weekNo;
       }
       (flock.weeks || []).forEach((week) => {
+        if (!Array.isArray(week.vaccines)) week.vaccines = [];
         if (!week.startDate) {
           week.startDate = (week.entries && week.entries[0] && week.entries[0].date) || "";
         }
@@ -1223,7 +530,12 @@ function migrateData(data) {
           week.attendance = { present };
         });
       }
-      recomputeWeekStarts(flock);
+      fillWeekStarts(flock);
+      fillHenHoused(flock);
+      if (flock.ageStart != null && flock.ageStart !== "") {
+        (flock.weeks || []).forEach((w) => { if (w.ageStart == null || w.ageStart === "") w.ageStart = flock.ageStart; });
+        delete flock.ageStart;
+      }
       delete flock.pageNo;
     });
   });
@@ -1299,25 +611,23 @@ function importJson(file) {
 }
 
 // ---------------------------------------------------------------- formulas
-function ageLabel(day0, dateStr) {
-  if (day0 == null) return "";
-  const t = Date.parse(dateStr);
-  if (!Number.isFinite(t)) return "";
-  const N = Math.round((t - day0) / 86400000);
-  const week = Math.floor(N / 7);
-  const day = N - week * 7 + 1;
+// Age is positional: week index + day within the week, plus the flock's Age Start (days) offset.
+function ageLabel(weekIndex, entryIndex, ageStart) {
+  const offset = (ageStart === "" || ageStart == null) ? 0 : n2(ageStart);
+  const ageDays = weekIndex * 7 + entryIndex + 1 + offset;
+  const week = Math.floor(ageDays / 7);
+  const day = ((ageDays % 7) + 7) % 7;
   return `${week}.${day}`;
 }
 
 function computeFlock(flock) {
-  const hhf = n2(flock.henHousedFemale);
-  const hhm = n2(flock.henHousedMale);
   const weeks = flock.weeks || [];
-  const startTimes = weeks.map((w) => Date.parse(w.startDate)).filter((t) => Number.isFinite(t));
-  const day0 = startTimes.length ? Math.min(...startTimes) : null;
 
-  let prev = null, cumMortF = 0, cumMortM = 0, cumFeedF = 0, cumFeedM = 0;
-  const weekComps = weeks.map((w) => {
+  let prev = null, cumMortF = 0, cumMortM = 0, cumFeedF = 0, cumFeedM = 0, lastHhf = 0, lastHhm = 0;
+  const weekComps = weeks.map((w, wi) => {
+    const hhf = n2(w.henHousedFemale) || lastHhf;
+    const hhm = n2(w.henHousedMale) || lastHhm;
+    lastHhf = hhf; lastHhm = hhm;
     const wStart = Date.parse(w.startDate);
     const rows = [];
     (w.entries || []).forEach((e, ei) => {
@@ -1341,7 +651,7 @@ function computeFlock(flock) {
       const feedGramM = denM !== 0 ? (maleCons * 1000) / denM : 0;
       cumFeedF += femCons; cumFeedM += maleCons;
       const row = {
-        date: formatDMY(dateISO), age: dateISO ? ageLabel(day0, dateISO) : "", openF, openM, mortF, mortM, pctF, pctM,
+        date: formatDMY(dateISO), age: ageLabel(wi, ei, w.ageStart), openF, openM, mortF, mortM, pctF, pctM,
         cullsF, cullsM, cumDepF: cumMortF, cumDepM: cumMortM, closeF, closeM,
         feedOpen, feedReceived, femCons, maleCons, feedClose, feedGramF, feedGramM,
         cumFeedF, cumFeedM,
@@ -1360,6 +670,7 @@ function computeFlock(flock) {
       cumFeedF: carry.cumFeedF || 0, cumFeedM: carry.cumFeedM || 0,
       pctF: hhf > 0 ? ((carry.cumDepF || 0) / hhf) * 100 : 0,
       pctM: hhm > 0 ? ((carry.cumDepM || 0) / hhm) * 100 : 0,
+      hhf, hhm,
     };
     return { rows, totals };
   });
@@ -1374,13 +685,12 @@ function weekCompFor(flock, weekId, farm) {
 
 // ---------------------------------------------------------------- egg (laying) farm
 function computeEggFlock(flock) {
-  const hhf = n2(flock.henHousedFemale);
-  const hhm = n2(flock.henHousedMale);
   const weeks = flock.weeks || [];
-  const startTimes = weeks.map((w) => Date.parse(w.startDate)).filter((t) => Number.isFinite(t));
-  const day0 = startTimes.length ? Math.min(...startTimes) : null;
-  let prev = null, cumMortF = 0, cumMortM = 0, cumFeedF = 0, cumFeedM = 0, cumTE = 0;
-  const weekComps = weeks.map((w) => {
+  let prev = null, cumMortF = 0, cumMortM = 0, cumFeedF = 0, cumFeedM = 0, cumTE = 0, lastHhf = 0, lastHhm = 0;
+  const weekComps = weeks.map((w, wi) => {
+    const hhf = n2(w.henHousedFemale) || lastHhf;
+    const hhm = n2(w.henHousedMale) || lastHhm;
+    lastHhf = hhf; lastHhm = hhm;
     const wStart = Date.parse(w.startDate);
     const rows = [];
     (w.entries || []).forEach((e, ei) => {
@@ -1418,7 +728,7 @@ function computeEggFlock(flock) {
       const coldReceived = he, coldOutward = n2(e.coldOutward);
       const coldClose = coldOpen + coldReceived - coldOutward;
       const row = {
-        date: formatDMY(dateISO), age: dateISO ? ageLabel(day0, dateISO) : "",
+        date: formatDMY(dateISO), age: ageLabel(wi, ei, w.ageStart),
         openF, openM, mortF, mortM, cullsF, cullsM,
         cumDepF: cumMortF, cumDepPctF, cumDepM: cumMortM, cumDepPctM, closeF, closeM,
         feedOpenF, feedReceivedF, femCons, feedCloseF, feedOpenM, feedReceivedM, maleCons, feedCloseM,
@@ -1440,6 +750,7 @@ function computeEggFlock(flock) {
       cumFeedF: carry.cumFeedF || 0, cumFeedM: carry.cumFeedM || 0,
       he: sum("he"), broken: sum("broken"), jumbo: sum("jumbo"), table: sum("table"), waste: sum("waste"),
       nhhe: sum("nhhe"), totalEggs: sum("totalEggs"), cummTE: carry.cummTE || 0, coldReceived: sum("coldReceived"),
+      hhf, hhm,
     };
     return { rows, totals };
   });
@@ -1506,15 +817,31 @@ const EGG_PROD_FOOTER = new Set(["he", "nhhe", "broken", "jumbo", "table", "wast
 function buildEggFlock(week, comp, firstWeek) { return buildDataTable(week, comp, EGG_FLOCK_COLUMNS, firstWeek, EGG_FLOCK_FOOTER, true); }
 function buildEggProd(week, comp, firstWeek) { return buildDataTable(week, comp, EGG_PROD_COLUMNS, firstWeek, EGG_PROD_FOOTER, false); }
 
+function splitPill(label, f, m, total, keyBase, suffix) {
+  const sx = suffix || {};
+  const attr = (pos) => keyBase ? ` data-sum="${keyBase}${pos}"` : "";
+  return `<div class="pill"><span>${label}</span><div class="pill-rows">
+    <div class="pill-row"><em>Female</em><b${attr("F")}>${f}${sx.f || ""}</b></div>
+    <div class="pill-row"><em>Male</em><b${attr("M")}>${m}${sx.m || ""}</b></div>
+    <div class="pill-row total"><em>Total</em><b${attr("T")}>${total}${sx.t || ""}</b></div>
+  </div></div>`;
+}
+
 function buildEggSummary(flock, comp) {
-  const housed = n2(flock.henHousedFemale) + n2(flock.henHousedMale);
-  const current = comp.totals.closeF + comp.totals.closeM;
-  const totMort = comp.totals.cumDepF + comp.totals.cumDepM;
+  const t = comp.totals;
+  const hF = n2(t.hhf), hM = n2(t.hhm);
+  const housed = hF + hM;
+  const totMort = n2(t.cumDepF) + n2(t.cumDepM);
+  const mortSfx = {
+    f: hF > 0 ? ` (${n2(t.cumDepPctF).toFixed(2)}%)` : "",
+    m: hM > 0 ? ` (${n2(t.cumDepPctM).toFixed(2)}%)` : "",
+    t: housed > 0 ? ` (${((totMort / housed) * 100).toFixed(2)}%)` : "",
+  };
   return `<div class="summary-pills">
-    <div class="pill"><span>Hen Housed</span><strong>${pillNum(housed)}</strong></div>
-    <div class="pill"><span>Current Birds</span><strong>${pillNum(current)}</strong></div>
-    <div class="pill"><span>Total Mortality</span><strong>${pillNum(totMort)}</strong></div>
-    <div class="pill"><span>Total Eggs (cum.)</span><strong>${pillNum(comp.totals.cummTE)}</strong></div>
+    ${splitPill("Hen Housed", pillNum(hF), pillNum(hM), pillNum(housed), "housed")}
+    ${splitPill("Current Birds", pillNum(t.closeF), pillNum(t.closeM), pillNum(t.closeF + t.closeM), "current")}
+    ${splitPill("Total Mortality", pillNum(t.cumDepF), pillNum(t.cumDepM), pillNum(totMort), "mort", mortSfx)}
+    <div class="pill"><span>Total Eggs (cum.)</span><strong data-sum="eggs">${pillNum(t.cummTE)}</strong></div>
   </div>`;
 }
 
@@ -1534,12 +861,6 @@ function buildEggBodyWeight(week) {
     <div class="card-body"><div class="table-scroll"><table class="grid"><thead><tr>
       <th>Body Weight</th><th>ACT</th><th>STD</th><th>+/-</th><th>Act Gain</th><th>Std Gain</th><th>CV %</th><th>Weight Range</th>
     </tr></thead><tbody>${rowFor("female", "Female")}${rowFor("male", "Male")}</tbody></table></div></div></div>`;
-}
-
-function buildEggExtras(week) {
-  const ta = (label, key, ph) => `<div class="card"><div class="card-head"><h3>${label}</h3></div>
-    <div class="card-body"><textarea class="remarks" data-eggtext="${key}" placeholder="${ph}">${esc(week[key] || "")}</textarea></div></div>`;
-  return ta("Medication", "medication", "Medication\u2026") + ta("Water Sanitation", "waterSanitation", "Water sanitation\u2026") + ta("Suggestions", "suggestions", "Suggestions\u2026");
 }
 
 // ---------------------------------------------------------------- register columns
@@ -1651,36 +972,37 @@ function buildRegister(week, comp, hasMales, firstWeek) {
 
 // ---------------------------------------------------------------- sub sections
 function buildSummary(flock, comp) {
-  const housed = n2(flock.henHousedFemale) + n2(flock.henHousedMale);
-  const current = comp.totals.closeF + comp.totals.closeM;
-  const totMort = comp.totals.cumDepF + comp.totals.cumDepM;
-  const mortPct = housed > 0 ? (totMort / housed) * 100 : 0;
-  const feedKg = comp.totals.cumFeedF + comp.totals.cumFeedM;
+  const t = comp.totals;
+  const hF = n2(t.hhf), hM = n2(t.hhm);
+  const housed = hF + hM;
+  const totMort = n2(t.cumDepF) + n2(t.cumDepM);
+  const mortSfx = {
+    f: hF > 0 ? ` (${n2(t.pctF).toFixed(2)}%)` : "",
+    m: hM > 0 ? ` (${n2(t.pctM).toFixed(2)}%)` : "",
+    t: housed > 0 ? ` (${((totMort / housed) * 100).toFixed(2)}%)` : "",
+  };
   return `<div class="summary-pills">
-    <div class="pill"><span>Hen Housed</span><strong data-sum="housed">${pillNum(housed)}</strong></div>
-    <div class="pill"><span>Current Birds</span><strong data-sum="current">${pillNum(current)}</strong></div>
-    <div class="pill"><span>Total Mortality</span><strong data-sum="mort">${pillNum(totMort)}${housed > 0 ? ` (${mortPct.toFixed(2)}%)` : ""}</strong></div>
-    <div class="pill"><span>Feed Consumed</span><strong data-sum="feed">${pillNum(feedKg)} kg</strong></div>
+    ${splitPill("Hen Housed", pillNum(hF), pillNum(hM), pillNum(housed), "housed")}
+    ${splitPill("Current Birds", pillNum(t.closeF), pillNum(t.closeM), pillNum(t.closeF + t.closeM), "current")}
+    ${splitPill("Total Mortality", pillNum(t.cumDepF), pillNum(t.cumDepM), pillNum(totMort), "mort", mortSfx)}
+    ${splitPill("Feed Consumed (kg)", pillNum(t.cumFeedF), pillNum(t.cumFeedM), pillNum(t.cumFeedF + t.cumFeedM), "feed")}
   </div>`;
 }
 
 function buildHeaderCard(farm, flock, week) {
   const field = (label, html) => `<div class="field"><label>${label}</label>${html}</div>`;
-  const isFirstWeek = !!(flock.weeks && flock.weeks[0] && flock.weeks[0].id === week.id);
   return `<div class="card"><div class="card-body">
-    <div class="flock-title"><h2>Flock ${esc(flock.flockNo || "")} — ${esc(week.weekNo || "Week")}</h2>
+    <div class="flock-title"><h2>${esc(farm.name || "Farm")} — ${esc(flock.flockNo || "Flock")} — ${esc(week.weekNo || "Week")}</h2>
       <span class="company">${esc(farm.company || "")}</span></div>
     <div class="meta-grid">
       ${field("Farm Name", `<input type="text" data-farm-meta="name" value="${esc(farm.name || "")}">`)}
       ${field("Flock No", `<input type="text" data-meta="flockNo" value="${esc(flock.flockNo || "")}">`)}
       ${field("Week", `<input type="text" data-week-meta="weekNo" value="${esc(week.weekNo || "")}">`)}
-      ${field("Week Starting Date", isFirstWeek
-        ? `<input type="date" data-week-meta="startDate" value="${esc(week.startDate || "")}">`
-        : `<input type="date" value="${esc(week.startDate || "")}" disabled title="Starts automatically the day after the previous week ends">`)}
-      ${field("Hen Housed Female", `<input type="number" step="any" data-meta="henHousedFemale" value="${esc(inputVal(flock.henHousedFemale))}">`)}
-      ${field("Hen Housed Male", `<input type="number" step="any" data-meta="henHousedMale" value="${esc(inputVal(flock.henHousedMale))}">`)}
+      ${field("Age Start (days)", `<input type="number" step="any" data-week-meta="ageStart" value="${esc(inputVal(week.ageStart))}" placeholder="0">`)}
+      ${field("Week Starting Date", `<input type="date" data-week-meta="startDate" value="${esc(week.startDate || "")}">`)}
+      ${field("Hen Housed Female", `<input type="number" step="any" data-week-meta="henHousedFemale" value="${esc(inputVal(week.henHousedFemale))}">`)}
+      ${field("Hen Housed Male", `<input type="number" step="any" data-week-meta="henHousedMale" value="${esc(inputVal(week.henHousedMale))}">`)}
     </div>
-    <p class="hint">Flock No and Hen Housed apply to the whole flock. Set only the first week’s start date — every later week automatically starts the day after the previous week ends.</p>
   </div></div>`;
 }
 
@@ -1822,7 +1144,7 @@ function renderFlockView() {
       `<div class="card"><div class="card-head"><h3>Egg Production &amp; Cold Room</h3></div>
         <div class="card-body">${buildEggProd(week, weekComp, firstWeek)}</div></div>` +
       buildEggBodyWeight(week) +
-      buildEggExtras(week) +
+      buildVaccines(week) +
       buildAttendance(flock, week);
     return;
   }
@@ -1859,14 +1181,20 @@ function refreshComputed(flock) {
 }
 
 function updateSummary(flock, comp) {
-  const housed = n2(flock.henHousedFemale) + n2(flock.henHousedMale);
-  const totMort = comp.totals.cumDepF + comp.totals.cumDepM;
-  const mortPct = housed > 0 ? (totMort / housed) * 100 : 0;
+  const t = comp.totals;
+  const hF = n2(t.hhf), hM = n2(t.hhm);
+  const housed = hF + hM;
+  const totMort = n2(t.cumDepF) + n2(t.cumDepM);
+  const pF = t.pctF != null ? n2(t.pctF) : n2(t.cumDepPctF);
+  const pM = t.pctM != null ? n2(t.pctM) : n2(t.cumDepPctM);
   const set = (k, v) => { const el = $(`[data-sum="${k}"]`); if (el) el.textContent = v; };
-  set("housed", pillNum(housed));
-  set("current", pillNum(comp.totals.closeF + comp.totals.closeM));
-  set("mort", pillNum(totMort) + (housed > 0 ? ` (${mortPct.toFixed(2)}%)` : ""));
-  set("feed", pillNum(comp.totals.cumFeedF + comp.totals.cumFeedM) + " kg");
+  set("housedF", pillNum(t.hhf)); set("housedM", pillNum(t.hhm)); set("housedT", pillNum(housed));
+  set("currentF", pillNum(t.closeF)); set("currentM", pillNum(t.closeM)); set("currentT", pillNum(t.closeF + t.closeM));
+  set("mortF", pillNum(t.cumDepF) + (hF > 0 ? ` (${pF.toFixed(2)}%)` : ""));
+  set("mortM", pillNum(t.cumDepM) + (hM > 0 ? ` (${pM.toFixed(2)}%)` : ""));
+  set("mortT", pillNum(totMort) + (housed > 0 ? ` (${((totMort / housed) * 100).toFixed(2)}%)` : ""));
+  set("feedF", pillNum(t.cumFeedF)); set("feedM", pillNum(t.cumFeedM)); set("feedT", pillNum(n2(t.cumFeedF) + n2(t.cumFeedM)));
+  set("eggs", pillNum(t.cummTE));
 }
 
 function updateBwComputed() {
@@ -1897,13 +1225,41 @@ function newFlock(no) {
     weeks: [makeWeek("Week-1", [])],
   };
 }
-function recomputeWeekStarts(flock) {
+function recomputeWeekStarts(flock, fromIndex) {
   const weeks = flock.weeks || [];
-  for (let i = 1; i < weeks.length; i++) {
+  const start = Math.max(1, fromIndex == null ? 1 : fromIndex);
+  for (let i = start; i < weeks.length; i++) {
     const prev = weeks[i - 1];
     const prevDays = (prev.entries || []).length || 7;
     weeks[i].startDate = prev.startDate ? addDays(prev.startDate, prevDays) : "";
   }
+}
+// Fill only empty week start dates (keeps manual edits) — used on load/import.
+function fillWeekStarts(flock) {
+  const weeks = flock.weeks || [];
+  for (let i = 1; i < weeks.length; i++) {
+    if (weeks[i].startDate) continue;
+    const prev = weeks[i - 1];
+    const prevDays = (prev.entries || []).length || 7;
+    weeks[i].startDate = prev.startDate ? addDays(prev.startDate, prevDays) : "";
+  }
+}
+// Hen Housed carries forward: copy each week's value into the following weeks from fromIndex.
+function propagateHenHoused(flock, fromIndex) {
+  const weeks = flock.weeks || [];
+  const start = Math.max(1, fromIndex == null ? 1 : fromIndex);
+  for (let i = start; i < weeks.length; i++) {
+    weeks[i].henHousedFemale = weeks[i - 1].henHousedFemale;
+    weeks[i].henHousedMale = weeks[i - 1].henHousedMale;
+  }
+}
+// Seed per-week Hen Housed from old flock-level value, then carry forward into empty weeks — used on load.
+function fillHenHoused(flock) {
+  const weeks = flock.weeks || [];
+  weeks.forEach((w, i) => {
+    if (w.henHousedFemale == null || w.henHousedFemale === "") w.henHousedFemale = i === 0 ? (flock.henHousedFemale || 0) : (weeks[i - 1].henHousedFemale || 0);
+    if (w.henHousedMale == null || w.henHousedMale === "") w.henHousedMale = i === 0 ? (flock.henHousedMale || 0) : (weeks[i - 1].henHousedMale || 0);
+  });
 }
 function addWeek(flock) {
   const weeks = flock.weeks || (flock.weeks = []);
@@ -1921,9 +1277,11 @@ function addWeek(flock) {
       wk.uniformity.feedGmLastWk = prev.uniformity.feedGmThisWk || "";
     }
     wk.entries = Array.from({ length: 7 }, () => ({ mortalityF: 0, mortalityM: 0, cullsF: 0, cullsM: 0, feedReceived: 0, femCons: 0, maleCons: 0 }));
+    wk.henHousedFemale = prev.henHousedFemale;
+    wk.henHousedMale = prev.henHousedMale;
   }
   weeks.push(wk);
-  recomputeWeekStarts(flock);
+  recomputeWeekStarts(flock, weeks.length - 1);
   return wk;
 }
 function addRow(week) {
@@ -1932,7 +1290,8 @@ function addRow(week) {
   const e = { mortalityF: 0, mortalityM: 0, cullsF: 0, cullsM: 0, feedReceived: 0, femCons: 0, maleCons: 0 };
   if (allEntries.length === 0) { e.openingF = 0; e.openingM = 0; e.feedOpening = 0; }
   week.entries.push(e);
-  recomputeWeekStarts(flock);
+  const idx = (flock.weeks || []).findIndex((w) => w.id === week.id);
+  recomputeWeekStarts(flock, idx + 1);
   renderFlockView();
   scheduleSave();
 }
@@ -1963,8 +1322,7 @@ function onFieldEdit(e) {
   }
   if (t.dataset.meta != null) {
     const key = t.dataset.meta;
-    const numeric = key === "henHousedFemale" || key === "henHousedMale";
-    flock[key] = numeric ? parseNum(t.value) : t.value;
+    flock[key] = t.value;
     if (key === "flockNo") renderSidebar();
     refreshComputed(flock);
     scheduleSave();
@@ -1972,9 +1330,23 @@ function onFieldEdit(e) {
   }
   if (t.dataset.weekMeta != null) {
     if (week) {
-      week[t.dataset.weekMeta] = t.value;
-      if (t.dataset.weekMeta === "startDate") { recomputeWeekStarts(flock); renderFlockView(); }
-      else renderSidebar();
+      const key = t.dataset.weekMeta;
+      const idx = (flock.weeks || []).findIndex((w) => w.id === week.id);
+      if (key === "henHousedFemale" || key === "henHousedMale") {
+        week[key] = parseNum(t.value);
+        propagateHenHoused(flock, idx + 1);
+        refreshComputed(flock);
+      } else if (key === "ageStart") {
+        week.ageStart = parseNum(t.value);
+        refreshComputed(flock);
+      } else if (key === "startDate") {
+        week.startDate = t.value;
+        recomputeWeekStarts(flock, idx + 1);
+        renderFlockView();
+      } else {
+        week[key] = t.value;
+        renderSidebar();
+      }
       scheduleSave();
     }
     return;
@@ -2038,9 +1410,16 @@ function onFlockClick(e) {
   switch (action) {
     case "addRow": addRow(week); break;
     case "delRow":
-      if (confirm("Delete this day's row?")) { week.entries.splice(+btn.dataset.i, 1); recomputeWeekStarts(currentFlock()); renderFlockView(); scheduleSave(); }
+      if (confirm("Delete this day's row?")) {
+        week.entries.splice(+btn.dataset.i, 1);
+        const fl = currentFlock();
+        const di = (fl.weeks || []).findIndex((w) => w.id === week.id);
+        recomputeWeekStarts(fl, di + 1);
+        renderFlockView(); scheduleSave();
+      }
       break;
     case "addVaccine":
+      week.vaccines = week.vaccines || [];
       week.vaccines.push({ name: "", batchNo: "", mfgDate: "", expiryDate: "", doneDate: "" });
       renderFlockView(); scheduleSave(); break;
     case "delVaccine":
